@@ -1,6 +1,6 @@
 package com.example.mvc_iti.network;
 
-import java.util.List;
+import com.example.mvc_iti.model.ProductsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

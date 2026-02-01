@@ -1,6 +1,4 @@
-package com.example.mvc_iti.network;
-
-import com.example.mvc_iti.model.Product;
+package com.example.mvc_iti.model;
 
 import java.util.List;
 
