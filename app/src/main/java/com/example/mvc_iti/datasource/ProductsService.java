@@ -1,4 +1,4 @@
-package com.example.mvc_iti.network;
+package com.example.mvc_iti.datasource;
 
 import com.example.mvc_iti.model.ProductsResponse;
 

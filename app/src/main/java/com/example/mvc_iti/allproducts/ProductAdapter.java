@@ -1,4 +1,4 @@
-package com.example.mvc_iti;
+package com.example.mvc_iti.allproducts;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.mvc_iti.R;
 import com.example.mvc_iti.model.Product;
 
 import java.util.ArrayList;
@@ -19,10 +20,12 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> productList;
+    private ProductOnClickListener movieOnClickListener;
 
 
-    public ProductAdapter() {
+    public ProductAdapter(ProductOnClickListener movieOnClickListener) {
         this.productList = new ArrayList<>();
+        this.movieOnClickListener = movieOnClickListener;
     }
 
     public void setMovieList(List<Product> productList) {
@@ -66,6 +69,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public void bind(Product product) {
             movieTitleTextView.setText(product.getName());
             movieCategoryTextView.setText(product.getDescription());
+            addToFavoritesButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    movieOnClickListener.addProductToFav(product);
+                }
+            });
             Glide.with(itemView)
                     .load(product.getImageUrl())
                     .into(movieImageView);

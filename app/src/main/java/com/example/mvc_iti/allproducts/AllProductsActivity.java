@@ -1,7 +1,6 @@
-package com.example.mvc_iti;
+package com.example.mvc_iti.allproducts;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -9,21 +8,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mvc_iti.R;
 import com.example.mvc_iti.datasource.ProductsNetworkResponse;
 import com.example.mvc_iti.datasource.ProductsRemoteDataSource;
 import com.example.mvc_iti.model.Product;
-import com.example.mvc_iti.network.Network;
-import com.example.mvc_iti.model.ProductsResponse;
-import com.example.mvc_iti.network.ProductsService;
+import com.example.mvc_iti.datasource.ProductsService;
 
-import java.io.IOException;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class AllMoviesActivity extends AppCompatActivity {
+public class AllProductsActivity extends AppCompatActivity implements ProductOnClickListener {
 
     RecyclerView rvMovies;
     ProductAdapter adapter;
@@ -42,7 +35,7 @@ public class AllMoviesActivity extends AppCompatActivity {
         rvMovies = findViewById(R.id.rv_movies);
         progressBar = findViewById(R.id.progress_circular);
         errorTextView = findViewById(R.id.tv_error);
-        adapter = new ProductAdapter();
+        adapter = new ProductAdapter(this);
         rvMovies.setAdapter(adapter);
         remoteDataSource = new ProductsRemoteDataSource(productsService);
         remoteDataSource.getAllProducts(new ProductsNetworkResponse() {
@@ -67,6 +60,11 @@ public class AllMoviesActivity extends AppCompatActivity {
                 errorTextView.setVisibility(View.VISIBLE);
             }
         });
+
+    }
+
+    @Override
+    public void addProductToFav(Product product) {
 
     }
 }

@@ -1,11 +1,8 @@
 package com.example.mvc_iti.network;
 
-import com.example.mvc_iti.model.Product;
-
-import java.util.List;
+import com.example.mvc_iti.datasource.ProductsService;
 
 import retrofit2.Retrofit;
-import retrofit2.*;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Network {

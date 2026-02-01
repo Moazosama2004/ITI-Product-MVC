@@ -1,12 +1,8 @@
 package com.example.mvc_iti.datasource;
 
-import android.util.Log;
-import android.view.View;
-
 import com.example.mvc_iti.model.Product;
 import com.example.mvc_iti.model.ProductsResponse;
 import com.example.mvc_iti.network.Network;
-import com.example.mvc_iti.network.ProductsService;
 
 import java.io.IOException;
 import java.util.List;

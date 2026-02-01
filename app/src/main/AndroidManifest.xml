@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVC_ITI">
         <activity
-            android:name=".AllMoviesActivity"
+            android:name=".allproducts.AllProductsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
