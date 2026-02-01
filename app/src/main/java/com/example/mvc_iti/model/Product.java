@@ -1,9 +1,15 @@
 package com.example.mvc_iti.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
+    @SerializedName("title")
     private String name;
-    private String description;
+    @SerializedName("price")
     private double price;
+    @SerializedName("description")
+    private String description;
+    @SerializedName("thumbnail")
     private String imageUrl;
 
     public Product(String description, String imageUrl, String name, double price) {
