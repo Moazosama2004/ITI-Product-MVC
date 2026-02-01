@@ -1,6 +1,6 @@
-package com.example.mvc_iti.datasource.products.remote;
+package com.example.mvc_iti.data.products.products.remote;
 
-import com.example.mvc_iti.model.ProductsResponse;
+import com.example.mvc_iti.data.products.model.ProductsResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

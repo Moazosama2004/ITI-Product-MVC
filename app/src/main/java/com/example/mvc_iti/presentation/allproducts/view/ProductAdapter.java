@@ -1,4 +1,4 @@
-package com.example.mvc_iti.allproducts;
+package com.example.mvc_iti.presentation.allproducts.view;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mvc_iti.R;
-import com.example.mvc_iti.model.Product;
+import com.example.mvc_iti.data.products.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> productList;
-    private ProductOnClickListener movieOnClickListener;
+    private final ProductOnClickListener movieOnClickListener;
 
 
     public ProductAdapter(ProductOnClickListener movieOnClickListener) {
@@ -53,10 +53,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
-        private ImageView movieImageView;
-        private TextView movieTitleTextView;
-        private TextView movieCategoryTextView;
-        private Button addToFavoritesButton;
+        private final ImageView movieImageView;
+        private final TextView movieTitleTextView;
+        private final TextView movieCategoryTextView;
+        private final Button addToFavoritesButton;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,4 +1,4 @@
-package com.example.mvc_iti.datasource.products.local;
+package com.example.mvc_iti.data.products.products.local;
 
 
 import androidx.lifecycle.LiveData;
@@ -8,7 +8,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.mvc_iti.model.Product;
+import com.example.mvc_iti.data.products.model.Product;
 
 import java.util.List;
 

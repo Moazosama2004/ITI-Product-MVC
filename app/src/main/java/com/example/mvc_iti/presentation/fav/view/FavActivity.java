@@ -1,26 +1,23 @@
-package com.example.mvc_iti.fav;
+package com.example.mvc_iti.presentation.fav.view;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvc_iti.R;
-import com.example.mvc_iti.datasource.products.local.ProductsLocalDataSource;
-import com.example.mvc_iti.model.Product;
+import com.example.mvc_iti.data.products.model.Product;
+import com.example.mvc_iti.presentation.fav.presenter.FavPresenter;
+import com.example.mvc_iti.presentation.fav.presenter.FavPresenterImpl;
 
 import java.util.List;
 
-public class FavActivity extends AppCompatActivity implements OnFavoriteClickListener{
+public class FavActivity extends AppCompatActivity implements OnFavoriteClickListener {
 
     RecyclerView rvFavMovies;
     FavProductsAdapter adapter;
-    ProductsLocalDataSource productsLocalDataSource;
+    FavPresenter favPresenter;
 
 
     @Override
@@ -30,8 +27,8 @@ public class FavActivity extends AppCompatActivity implements OnFavoriteClickLis
         rvFavMovies = findViewById(R.id.rvFavMovies);
         adapter = new FavProductsAdapter(this);
         rvFavMovies.setAdapter(adapter);
-        productsLocalDataSource = new ProductsLocalDataSource(getApplicationContext());
-        productsLocalDataSource.getAllProducts().observe(
+        favPresenter = new FavPresenterImpl(getApplicationContext());
+        favPresenter.getFavProducts().observe(
                 this,
                 new Observer<List<Product>>() {
                     @Override
@@ -45,6 +42,6 @@ public class FavActivity extends AppCompatActivity implements OnFavoriteClickLis
 
     @Override
     public void onClick(Product product) {
-        productsLocalDataSource.deleteProduct(product);
+        favPresenter.deleteFromFav(product);
     }
 }

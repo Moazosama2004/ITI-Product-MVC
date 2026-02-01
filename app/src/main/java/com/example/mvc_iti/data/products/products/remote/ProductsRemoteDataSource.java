@@ -1,7 +1,7 @@
-package com.example.mvc_iti.datasource.products.remote;
+package com.example.mvc_iti.data.products.products.remote;
 
-import com.example.mvc_iti.model.Product;
-import com.example.mvc_iti.model.ProductsResponse;
+import com.example.mvc_iti.data.products.model.Product;
+import com.example.mvc_iti.data.products.model.ProductsResponse;
 import com.example.mvc_iti.network.Network;
 
 import java.io.IOException;
@@ -12,17 +12,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductsRemoteDataSource {
-    private ProductsService productsService;
+    private final ProductsService productsService;
 
-    public ProductsRemoteDataSource(ProductsService productsService) {
+    public ProductsRemoteDataSource() {
         this.productsService = new Network().getProductsService();
     }
 
-    public void getAllProducts(ProductsNetworkResponse networkResponse){
+    public void getAllProducts(ProductsNetworkResponse networkResponse) {
         productsService.getAllProducts().enqueue(new Callback<ProductsResponse>() {
             @Override
             public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
-                if(response.code() == 200){
+                if (response.code() == 200) {
                     ProductsResponse productsResponse = response.body();
                     List<Product> productList = productsResponse.getProducts();
                     networkResponse.onSuccess(productList);
@@ -33,9 +33,9 @@ public class ProductsRemoteDataSource {
 
             @Override
             public void onFailure(Call<ProductsResponse> call, Throwable t) {
-                if(t instanceof IOException){
+                if (t instanceof IOException) {
                     networkResponse.noInternetConnection("No internet connection");
-                }else {
+                } else {
                     networkResponse.onError("Error occurred while fetching data!");
                 }
             }

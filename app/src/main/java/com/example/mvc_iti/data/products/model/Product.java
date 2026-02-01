@@ -1,4 +1,4 @@
-package com.example.mvc_iti.model;
+package com.example.mvc_iti.data.products.model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

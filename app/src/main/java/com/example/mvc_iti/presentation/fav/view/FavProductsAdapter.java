@@ -1,4 +1,4 @@
-package com.example.mvc_iti.fav;
+package com.example.mvc_iti.presentation.fav.view;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,19 +14,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.mvc_iti.R;
-import com.example.mvc_iti.model.Product;
+import com.example.mvc_iti.data.products.model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavProductsAdapter extends RecyclerView.Adapter<FavProductsAdapter.ViewHolder>{
-    private List<Product> products;
-    public OnFavoriteClickListener listener;
+public class FavProductsAdapter extends RecyclerView.Adapter<FavProductsAdapter.ViewHolder> {
     public static final String TAG = "FavoriteAdapter";
+    public OnFavoriteClickListener listener;
+    private List<Product> products;
 
-    public FavProductsAdapter(OnFavoriteClickListener listener){
+    public FavProductsAdapter(OnFavoriteClickListener listener) {
         this.products = new ArrayList<>();
-        this.listener= listener;
+        this.listener = listener;
     }
 
     @NonNull
@@ -50,12 +50,12 @@ public class FavProductsAdapter extends RecyclerView.Adapter<FavProductsAdapter.
         return products.size();
     }
 
-    public void setList(List<Product> updatedProducts){
+    public void setList(List<Product> updatedProducts) {
         this.products = updatedProducts;
         notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
         ImageView favProductImg;
         TextView favProductName;
         TextView favProductPric;
