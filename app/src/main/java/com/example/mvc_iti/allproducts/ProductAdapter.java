@@ -67,7 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         }
 
         public void bind(Product product) {
-            movieTitleTextView.setText(product.getName());
+            movieTitleTextView.setText(product.getTitle());
             movieCategoryTextView.setText(product.getDescription());
             addToFavoritesButton.setOnClickListener(new View.OnClickListener() {
                 @Override

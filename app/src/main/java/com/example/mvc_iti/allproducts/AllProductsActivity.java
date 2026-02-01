@@ -9,10 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mvc_iti.R;
-import com.example.mvc_iti.datasource.ProductsNetworkResponse;
-import com.example.mvc_iti.datasource.ProductsRemoteDataSource;
+import com.example.mvc_iti.datasource.products.local.ProductsLocalDataSource;
+import com.example.mvc_iti.datasource.products.remote.ProductsNetworkResponse;
+import com.example.mvc_iti.datasource.products.remote.ProductsRemoteDataSource;
 import com.example.mvc_iti.model.Product;
-import com.example.mvc_iti.datasource.ProductsService;
+import com.example.mvc_iti.datasource.products.remote.ProductsService;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class AllProductsActivity extends AppCompatActivity implements ProductOnC
     ProgressBar progressBar;
     TextView errorTextView;
     ProductsRemoteDataSource remoteDataSource;
+    ProductsLocalDataSource productsLocalDataSource;
 
 
     @Override
@@ -38,6 +40,7 @@ public class AllProductsActivity extends AppCompatActivity implements ProductOnC
         adapter = new ProductAdapter(this);
         rvMovies.setAdapter(adapter);
         remoteDataSource = new ProductsRemoteDataSource(productsService);
+        productsLocalDataSource = new ProductsLocalDataSource(getApplicationContext());
         remoteDataSource.getAllProducts(new ProductsNetworkResponse() {
             @Override
             public void onSuccess(List<Product> products) {
@@ -65,6 +68,6 @@ public class AllProductsActivity extends AppCompatActivity implements ProductOnC
 
     @Override
     public void addProductToFav(Product product) {
-
+        productsLocalDataSource.insertProduct(product);
     }
 }

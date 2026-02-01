@@ -1,6 +1,6 @@
 package com.example.mvc_iti.network;
 
-import com.example.mvc_iti.datasource.ProductsService;
+import com.example.mvc_iti.datasource.products.remote.ProductsService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
