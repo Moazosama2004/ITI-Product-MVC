@@ -1,4 +1,4 @@
-package com.example.mvc_iti.data.products.products.remote;
+package com.example.mvc_iti.data.products.products.datasource.remote;
 
 import com.example.mvc_iti.data.products.model.Product;
 

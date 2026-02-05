@@ -1,4 +1,4 @@
-package com.example.mvc_iti.data.products.products.local;
+package com.example.mvc_iti.data.products.products.datasource.local;
 
 
 import androidx.lifecycle.LiveData;
@@ -12,14 +12,18 @@ import com.example.mvc_iti.data.products.model.Product;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
+
+
 @Dao
 public interface ProductsDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addToFav(Product product);
+    Completable addToFav(Product product);
 
     @Delete
-    void deleteFromFav(Product product);
+    Completable deleteFromFav(Product product);
 
     @Query("SELECT * FROM products")
-    LiveData<List<Product>> getAllProducts();
+    Single<List<Product>> getAllProducts();
 }

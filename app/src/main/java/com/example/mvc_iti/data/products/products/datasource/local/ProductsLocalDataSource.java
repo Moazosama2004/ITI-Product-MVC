@@ -1,4 +1,4 @@
-package com.example.mvc_iti.data.products.products.local;
+package com.example.mvc_iti.data.products.products.datasource.local;
 
 import android.content.Context;
 
@@ -9,6 +9,10 @@ import com.example.mvc_iti.db.AppDatabase;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Single;
+
+
 public class ProductsLocalDataSource {
     private final ProductsDAO productsDAO;
 
@@ -16,19 +20,15 @@ public class ProductsLocalDataSource {
         this.productsDAO = AppDatabase.getINSTANCE(context).productsDAO();
     }
 
-    public void insertProduct(Product product) {
-        new Thread(() -> {
-            productsDAO.addToFav(product);
-        }).start();
+    public Completable insertProduct(Product product) {
+        return productsDAO.addToFav(product);
     }
 
-    public void deleteProduct(Product product) {
-        new Thread(() -> {
-            productsDAO.deleteFromFav(product);
-        }).start();
+    public Completable deleteProduct(Product product) {
+        return productsDAO.deleteFromFav(product);
     }
 
-    public LiveData<List<Product>> getAllProducts() {
+    public Single<List<Product>> getAllProducts() {
         return productsDAO.getAllProducts();
     }
 }

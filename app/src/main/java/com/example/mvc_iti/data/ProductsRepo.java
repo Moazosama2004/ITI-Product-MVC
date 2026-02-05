@@ -5,11 +5,16 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.mvc_iti.data.products.model.Product;
-import com.example.mvc_iti.data.products.products.local.ProductsLocalDataSource;
-import com.example.mvc_iti.data.products.products.remote.ProductsNetworkResponse;
-import com.example.mvc_iti.data.products.products.remote.ProductsRemoteDataSource;
+import com.example.mvc_iti.data.products.model.ProductsResponse;
+import com.example.mvc_iti.data.products.products.datasource.local.ProductsLocalDataSource;
+import com.example.mvc_iti.data.products.products.datasource.remote.ProductsNetworkResponse;
+import com.example.mvc_iti.data.products.products.datasource.remote.ProductsRemoteDataSource;
 
 import java.util.List;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 public class ProductsRepo {
 
@@ -22,19 +27,19 @@ public class ProductsRepo {
         this.productsRemoteDataSource = new ProductsRemoteDataSource();
     }
 
-    public void getAllProducts(ProductsNetworkResponse productsNetworkResponse) {
-        productsRemoteDataSource.getAllProducts(productsNetworkResponse);
+    public Observable<ProductsResponse> getAllProducts() {
+        return productsRemoteDataSource.getAllProducts();
     }
 
-    public void addToFav(Product product) {
-        productsLocalDataSource.insertProduct(product);
+    public Completable addToFav(Product product) {
+       return productsLocalDataSource.insertProduct(product);
     }
 
-    public void deleteProduct(Product product) {
-        productsLocalDataSource.deleteProduct(product);
+    public Completable deleteProduct(Product product) {
+        return productsLocalDataSource.deleteProduct(product);
     }
 
-    public LiveData<List<Product>> getFavProducts() {
+    public Single<List<Product>> getFavProducts() {
         return productsLocalDataSource.getAllProducts();
     }
 }

@@ -7,7 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.mvc_iti.data.products.model.Product;
-import com.example.mvc_iti.data.products.products.local.ProductsDAO;
+import com.example.mvc_iti.data.products.products.datasource.local.ProductsDAO;
 
 @Database(entities = {Product.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
