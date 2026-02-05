@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MVC_ITI">
         <activity
-            android:name=".fav.FavActivity"
+            android:name=".presentation.fav.view.FavActivity"
             android:exported="false" />
         <activity
-            android:name=".allproducts.AllProductsActivity"
+            android:name=".presentation.allproducts.view.AllProductsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
